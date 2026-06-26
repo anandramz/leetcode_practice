@@ -14,7 +14,6 @@ def recursive_in_order(root):
 """
 Takes in a TreeNode and performs iterative inorder traversal and prints it 
 """
-
 def iterative_in_order(root): 
     if not root:
         return
@@ -28,29 +27,15 @@ def iterative_in_order(root):
         print(curr.val, ",")
         curr = curr.right 
 
-
-
-
-
 # post order: left ->right->root 
-# def recursive_post_order(): 
-def iterative_post_order(root): 
-    # Implementation Plan:
-        # last visited, stack, curr 
-        # 1. while stack or curr:
-            # 2. while current is none null and not equal to top of the stack
-                # check for case where stack length is not null
-                # add current to stack and move current to left
-            # 3. peak at the top of the stack 
-            # 4. check if the top of the stack right child is not null and is not equal to the
-                # last visited right child 
-                # if this is the case then we can move the current to this pointer then also set the last
-                # visited right child to this 
-            # 5. 
-                # else we process it by popping it off the stack 
-                # whenever we process a node we set it to be the last visited
-                # we will always process a right node right before its own node  or it wil lbe none 
+def recursive_post_order(root): 
+    if not root:
+        return 
+    recursive_post_order(root.left)
+    recursive_post_order(root.right)
+    print(root.val, end=", ")
 
+def iterative_post_order(root): 
     last_visited = None 
     curr = root  
     stack = []
@@ -59,7 +44,7 @@ def iterative_post_order(root):
             stack.append(curr)
             curr = curr.left 
         curr = stack[-1]
-        if curr.right or curr.right != last_visited:
+        if curr.right and curr.right != last_visited:
             curr = curr.right 
         else:
             last_visited = stack.pop() 
@@ -68,7 +53,28 @@ def iterative_post_order(root):
 
 # pre-order: root->left->right 
 # def recursive_pre_order(): 
+def recursive_pre_order(root):
+    if not root:
+        return 
+    print(root.val, end=", ")
+    recursive_pre_order(root.left)
+    recursive_pre_order(root.right)
+
 # def iterative_pre_order(): 
+"""
+iterative pre_order
+"""
+def iterative_pre_order(root):
+    if not root:
+        return 
+    stack = [root]
+    while stack:
+        curr = stack.pop()
+        print(curr.val, end=", ")
+        if curr.right:
+            stack.append(curr.right)
+        if curr.left:
+            stack.append(curr.left)
 
 if __name__ == "__main__":
     l = TreeNode(1,
