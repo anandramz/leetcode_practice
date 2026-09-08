@@ -10,9 +10,11 @@ class Solution:
         l = 0 
         map = defaultdict(int)
         max_value = 0
+        max_freq = 0
         for r in range(len(s)):
             map[s[r]]+=1
-            while ((r-l+1) - max(map.values())) > k:
+            max_freq = max(max_freq, map[s[r]])
+            while ((r-l+1) - max_freq) > k:
                 map[s[l]]-=1
                 l+=1
             max_value = max(r-l+1,max_value)
