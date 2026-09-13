@@ -32,9 +32,6 @@ class Solution:
                 stack.append([a,1])
             while stack and stack[-1][1] == k:
                 stack.pop()
-            while len(stack) > 2 and stack[-1][0] == stack[-2][0]:
-                char, count = stack.pop()
-                stack[-1][1]+=count
 
         rlist = []
         for char, count in stack:
