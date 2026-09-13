@@ -14,6 +14,6 @@ class Solution:
             i+=1
         if not stack or i == len(stack):
             return "0"
-        return_string = "".join(stack[i:])
+        return_string = ''.join(stack[i:])
         return return_string
 
