@@ -12,8 +12,8 @@ class Solution:
         i = 0 
         while stack and i < len(stack) and stack[i] == "0":
             i+=1
-        if not stack or i == len(stack):
-            return "0"
         return_string = ''.join(stack[i:])
+        if return_string == "":
+            return "0"
         return return_string
 
