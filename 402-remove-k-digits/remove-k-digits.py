@@ -10,7 +10,7 @@ class Solution:
             stack.pop()
             k-=1
         i = 0 
-        while stack and i < len(stack) and stack[i] == "0":
+        while i < len(stack) and stack[i] == "0":
             i+=1
         return_string = ''.join(stack[i:])
         if return_string == "":
