@@ -5,7 +5,7 @@ class Solution:
             for a in nums:
                 if a <= penalty:
                     continue   
-                ops+=((ceil(a/penalty)-1))
+                ops+=(a+penalty-1)//penalty-1
             return ops <= maxOperations
         
         l = 1
