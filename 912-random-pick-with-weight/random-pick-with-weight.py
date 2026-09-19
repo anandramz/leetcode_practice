@@ -13,14 +13,13 @@ class Solution:
         target = random.random() # samples from U(0,1)
         l = 1 
         r = len(self.cdf) - 1 
-        while l <= r: 
+        while l < r: 
             m = (l+r)//2
-            if self.cdf[m-1] < target <= self.cdf[m]:
-                return m - 1
-            elif self.cdf[m] < target:
-                l = m + 1
-            else: 
-                r = m - 1
+            if self.cdf[m] <= target:
+                l = m + 1   
+            else:
+                r = m
+        return r - 1
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(w)
 # param_1 = obj.pickIndex()
